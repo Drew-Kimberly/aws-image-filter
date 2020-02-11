@@ -1,5 +1,4 @@
 import express, { Express } from 'express';
-import bodyParser from 'body-parser';
 import { IndexRouter } from './controllers/v0/index.router';
 import { HealthRouter } from './health.router';
 
@@ -9,9 +8,6 @@ import { HealthRouter } from './health.router';
 
   // Set the network port
   const port = process.env.PORT || 8082;
-
-  // Use the body parser middleware for post requests
-  app.use(bodyParser.json());
 
   // Route all API traffic to our index router.
   app.use('/api/v0/', IndexRouter);
