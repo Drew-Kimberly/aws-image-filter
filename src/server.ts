@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
-import cors, { CorsOptions } from 'cors';
 import bodyParser from 'body-parser';
 import { IndexRouter } from './controllers/v0/index.router';
+import { HealthRouter } from './health.router';
 
 (async () => {
   // Init the Express application
@@ -13,29 +13,11 @@ import { IndexRouter } from './controllers/v0/index.router';
   // Use the body parser middleware for post requests
   app.use(bodyParser.json());
 
-  // Setup CORS middleware.
-  const originWhitelist: string[] = ['http://localhost:8102'];
-  const corsOptions: CorsOptions = {
-    allowedHeaders: [
-      'Origin',
-      'X-Requested-With',
-      'Content-Type',
-      'Accept',
-      'Authorization'
-    ],
-    origin: (
-      origin: string,
-      callback: (err: Error | null, allow?: boolean) => void
-    ) =>
-      originWhitelist.includes(origin)
-        ? callback(null, true)
-        : callback(null, false)
-  };
-  app.use(cors(corsOptions));
-  app.options('*', cors());
-
   // Route all API traffic to our index router.
   app.use('/api/v0/', IndexRouter);
+
+  // Add a health check route.
+  app.use('/', HealthRouter);
 
   // Start the Server
   app.listen(port, () => {

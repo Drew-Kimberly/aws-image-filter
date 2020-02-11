@@ -16,3 +16,18 @@ install:
 
 script:
   - npm run ci
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_ACCESS_KEY
+  bucket: $AWS_EB_S3_BUCKET # The S3 bucket EB uses to store the application files.
+  region: $AWS_REGION
+  app: $AWS_EB_APP
+  env: $AWS_EB_ENV
+  zip_file: './www/Archive.zip'
+  skip_cleanup: true
+  on:
+    tags: true
