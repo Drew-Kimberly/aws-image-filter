@@ -2,6 +2,8 @@
 
 Simple Express app responsible for filtering images.
 
+#### AWS Dev Environment Domain: http://image-filter-svc-dev.us-east-1.elasticbeanstalk.com/
+
 ## Usage
 
 This app exposes a single API resource:
