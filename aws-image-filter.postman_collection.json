@@ -6,11 +6,16 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:8082/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
+			"name": "GET /filteredimage",
 			"request": {
 				"auth": {
 					"type": "apikey",
 					"apikey": [
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						},
 						{
 							"key": "value",
 							"value": "{{apiKey}}",
@@ -20,16 +25,18 @@
 							"key": "in",
 							"value": "header",
 							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "api_key",
-							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
 				"url": {
 					"raw": "http://{{HOST}}/api/v0/filteredimage?image_url=https://cdn2-www.dogtime.com/assets/uploads/2018/10/puppies-cover.jpg",
 					"protocol": "http",
@@ -76,13 +83,13 @@
 	],
 	"variable": [
 		{
-			"id": "03c6e8e9-d5c0-45a1-b15e-b9523db6847c",
+			"id": "8a6bf51e-108a-409f-8878-2c52ebc13e2a",
 			"key": "HOST",
-			"value": "image-filter-svc-dev.us-east-1.elasticbeanstalk.com/",
+			"value": "image-filter-svc-dev.us-east-1.elasticbeanstalk.com",
 			"type": "string"
 		},
 		{
-			"id": "077f5399-e074-40bb-a03e-4ef2b5ccd9d7",
+			"id": "fae21f7d-2c72-4720-85b6-909332555fa4",
 			"key": "apiKey",
 			"value": "",
 			"type": "string"
