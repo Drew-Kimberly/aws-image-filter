@@ -38,7 +38,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jimp": "^0.9.3",
     "validator": "^12.2.0"
   }
